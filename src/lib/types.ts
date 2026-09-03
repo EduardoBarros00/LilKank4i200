@@ -66,6 +66,9 @@ export interface Settings {
   allow_registration: boolean
   require_auth_for_downloads: boolean
   default_visibility: Visibility
+  background_image_url: string | null
+  background_overlay: number
+  background_position: string
   created_at: string
   updated_at: string
 }
