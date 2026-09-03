@@ -3,6 +3,7 @@ import { PublicLayout } from './components/PublicLayout'
 import { AdminLayout } from './components/AdminLayout'
 import { RequireAdmin, RequireAuth } from './components/Guards'
 import { ToastHost } from './components/ToastHost'
+import { SiteAppearance } from './components/SiteAppearance'
 import { HomePage } from './pages/HomePage'
 import { ExplorePage } from './pages/ExplorePage'
 import { LinksPage } from './pages/LinksPage'
@@ -22,6 +23,7 @@ import { SettingsAdminPage } from './pages/admin/SettingsAdminPage'
 
 export default function App() {
   return <>
+    <SiteAppearance />
     <Routes>
       <Route element={<PublicLayout />}>
         <Route path="/" element={<HomePage />} />
