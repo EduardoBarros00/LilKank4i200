@@ -7,6 +7,7 @@ import { SiteAppearance } from './components/SiteAppearance'
 import { HomePage } from './pages/HomePage'
 import { ExplorePage } from './pages/ExplorePage'
 import { LinksPage } from './pages/LinksPage'
+import { EntertainmentPage } from './pages/EntertainmentPage'
 import { ItemPage } from './pages/ItemPage'
 import { LoginPage } from './pages/LoginPage'
 import { SignupPage } from './pages/SignupPage'
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/explorar" element={<ExplorePage />} />
         <Route path="/links" element={<LinksPage />} />
+        <Route path="/entretenimento" element={<EntertainmentPage />} />
         <Route path="/item/:slug" element={<ItemPage />} />
         <Route path="/conta" element={<RequireAuth><AccountPage /></RequireAuth>} />
         <Route path="/downloads" element={<RequireAuth><MyDownloadsPage /></RequireAuth>} />
