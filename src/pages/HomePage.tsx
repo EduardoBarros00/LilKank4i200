@@ -13,8 +13,8 @@ export function HomePage() {
     queryKey: ['home'],
     queryFn: async () => {
       const [recent, popular, categories, settings] = await Promise.all([
-        db.from('lilkank_items').select('*, lilkank_categories(name,slug)').eq('status', 'published').in('visibility', ['public', 'unlisted', 'members']).order('published_at', { ascending: false }).limit(8),
-        db.from('lilkank_items').select('*, lilkank_categories(name,slug)').eq('status', 'published').eq('item_type', 'file').in('visibility', ['public', 'unlisted', 'members']).order('download_count', { ascending: false }).limit(4),
+        db.from('lilkank_items').select('*, lilkank_categories(name,slug)').eq('status', 'published').in('visibility', ['public', 'members']).order('published_at', { ascending: false }).limit(8),
+        db.from('lilkank_items').select('*, lilkank_categories(name,slug)').eq('status', 'published').eq('item_type', 'file').in('visibility', ['public', 'members']).order('download_count', { ascending: false }).limit(4),
         db.from('lilkank_categories').select('*').eq('active', true).order('sort_order'),
         db.from('lilkank_settings').select('*').eq('id', 1).maybeSingle(),
       ])

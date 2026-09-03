@@ -15,7 +15,7 @@ export function ExplorePage() {
   const [order, setOrder] = useState('recentes')
   const { data, isLoading } = useQuery({ queryKey: ['explore'], queryFn: async () => {
     const [items, categories] = await Promise.all([
-      db.from('lilkank_items').select('*, lilkank_categories(name,slug)').eq('status', 'published').in('visibility', ['public', 'unlisted', 'members']).order('published_at', { ascending: false }),
+      db.from('lilkank_items').select('*, lilkank_categories(name,slug)').eq('status', 'published').in('visibility', ['public', 'members']).order('published_at', { ascending: false }),
       db.from('lilkank_categories').select('*').eq('active', true).order('sort_order'),
     ])
     return { items: (items.data || []) as Item[], categories: (categories.data || []) as Category[] }
