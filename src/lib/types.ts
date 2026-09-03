@@ -6,6 +6,7 @@ export type ItemStatus = 'draft' | 'published' | 'archived'
 export interface Profile {
   user_id: string
   display_name: string | null
+  email: string | null
   avatar_url: string | null
   role: Role
   created_at: string
