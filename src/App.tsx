@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { PublicLayout } from './components/PublicLayout'
 import { AdminLayout } from './components/AdminLayout'
 import { RequireAdmin, RequireAuth } from './components/Guards'
+import { ToastHost } from './components/ToastHost'
 import { HomePage } from './pages/HomePage'
 import { ExplorePage } from './pages/ExplorePage'
 import { LinksPage } from './pages/LinksPage'
@@ -20,27 +21,30 @@ import { DownloadsAdminPage } from './pages/admin/DownloadsAdminPage'
 import { SettingsAdminPage } from './pages/admin/SettingsAdminPage'
 
 export default function App() {
-  return <Routes>
-    <Route element={<PublicLayout />}>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/explorar" element={<ExplorePage />} />
-      <Route path="/links" element={<LinksPage />} />
-      <Route path="/item/:slug" element={<ItemPage />} />
-      <Route path="/conta" element={<RequireAuth><AccountPage /></RequireAuth>} />
-      <Route path="/downloads" element={<RequireAuth><MyDownloadsPage /></RequireAuth>} />
-    </Route>
-    <Route path="/login" element={<LoginPage />} />
-    <Route path="/cadastro" element={<SignupPage />} />
-    <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
-      <Route index element={<AdminDashboard />} />
-      <Route path="cofre" element={<VaultPage />} />
-      <Route path="arquivos" element={<FilesAdminPage />} />
-      <Route path="links" element={<LinksAdminPage />} />
-      <Route path="publicacoes" element={<PublicationsPage />} />
-      <Route path="usuarios" element={<UsersAdminPage />} />
-      <Route path="downloads" element={<DownloadsAdminPage />} />
-      <Route path="configuracoes" element={<SettingsAdminPage />} />
-    </Route>
-    <Route path="*" element={<Navigate to="/" replace />} />
-  </Routes>
+  return <>
+    <Routes>
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/explorar" element={<ExplorePage />} />
+        <Route path="/links" element={<LinksPage />} />
+        <Route path="/item/:slug" element={<ItemPage />} />
+        <Route path="/conta" element={<RequireAuth><AccountPage /></RequireAuth>} />
+        <Route path="/downloads" element={<RequireAuth><MyDownloadsPage /></RequireAuth>} />
+      </Route>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/cadastro" element={<SignupPage />} />
+      <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
+        <Route index element={<AdminDashboard />} />
+        <Route path="cofre" element={<VaultPage />} />
+        <Route path="arquivos" element={<FilesAdminPage />} />
+        <Route path="links" element={<LinksAdminPage />} />
+        <Route path="publicacoes" element={<PublicationsPage />} />
+        <Route path="usuarios" element={<UsersAdminPage />} />
+        <Route path="downloads" element={<DownloadsAdminPage />} />
+        <Route path="configuracoes" element={<SettingsAdminPage />} />
+      </Route>
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+    <ToastHost />
+  </>
 }
