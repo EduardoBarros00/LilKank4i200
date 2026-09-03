@@ -1,4 +1,4 @@
-import Hls from 'hls.js'
+import Hls, { ErrorTypes } from 'hls.js'
 import { Radio, Tv } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
@@ -41,13 +41,13 @@ export function LiveTV() {
       hls.on(Hls.Events.ERROR, (_event, data) => {
         if (!data.fatal || disposed) return
 
-        if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
+        if (data.type === ErrorTypes.NETWORK_ERROR) {
           setError('O sinal deste canal está temporariamente indisponível. Tentando reconectar…')
           hls?.startLoad()
           return
         }
 
-        if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
+        if (data.type === ErrorTypes.MEDIA_ERROR) {
           setError('O player encontrou um problema de mídia. Tentando recuperar o sinal…')
           hls?.recoverMediaError()
           return
